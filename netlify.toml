@@ -1,0 +1,3 @@
+[build]
+  command = "pip install -r requirements.txt && python FlaskGym1.py"
+  publish = "/opt/build/repo"
