@@ -2,8 +2,12 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import openai
 import os
+from dotenv import load_dotenv
 
-# Load the environment variables
+# Load the environment variables from the .env file
+load_dotenv('key.env')
+
+# Set up your OpenAI API key
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
 app = Flask(__name__)
@@ -40,11 +44,16 @@ def fitness_evaluation(data):
 
 @app.route("/", methods=["POST"])
 def main():
-    data = request.get_json()  # Get data from POST request sent by Tally Forms
-    fitness_advice = fitness_evaluation(data)
+    data = request.get_json()  # Get data from POST request
 
-    # Return response as JSON
-    return jsonify({'fitness_advice': fitness_advice})
+    if data is not None:
+        fitness_advice = fitness_evaluation(data)
+
+        # Return response as JSON
+        return jsonify({'fitness_advice': fitness_advice})
+    else:
+        # Handle the case when data is None (or not in the expected format)
+        return jsonify({'error': 'Invalid data format'})
 
 if __name__ == "__main__":
     app.run(debug=True)
