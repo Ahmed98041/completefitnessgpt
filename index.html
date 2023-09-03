@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FitnessGPT</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="bg-light">
+    <div class="container">
+        <h1 class="text-center my-4">FitnessGPT</h1>
+        <form action="/" method="post" class="my-4">
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="text" class="form-control" id="age" name="age" required>
+            </div>
+
+            <div class="form-group">
+                <label for="height_meters">Height (meters):</label>
+                <input type="number" class="form-control" id="height_meters" name="height_meters" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="weight_kg">Weight (kg):</label>
+                <input type="number" class="form-control" id="weight_kg" name="weight_kg" required>
+            </div>
+
+            <div class="form-group">
+                <label>Gender:</label><br>
+                <input type="radio" id="male" name="gender" value="Male" required>
+                <label for="male">Male</label><br>
+                <input type="radio" id="female" name="gender" value="Female" required>
+                <label for="female">Female</label>
+            </div>
+
+            <div class="form-group">
+                <label for="activity_levels_1highest">Activity Levels:</label>
+                <select id="activity_levels_1highest" class="form-control" name="activity_levels_1highest" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="free_time_daily_hours">Free Time Daily (hours):</label>
+                <input type="number" class="form-control" id="free_time_daily_hours" name="free_time_daily_hours" step="0.5" required>
+            </div>
+
+            <div class="form-group">
+                <label>A Person with Disability (PWD):</label>
+                <input type="checkbox" id="a_pwd" name="a_pwd">
+            </div>
+
+            <div class="form-group">
+                <label for="additional_info">Additional Information:</label>
+                <textarea class="form-control" id="additional_info" name="additional_info"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="user_goals">User Goals:</label>
+                <input type="text" class="form-control" id="user_goals" name="user_goals" required>
+            </div>
+
+            <div class="form-group">
+                <label>Target Muscles:</label><br>
+                <input type="checkbox" id="abdominals" name="target_muscles" value="Abdominals">
+                <label for="abdominals">Abdominals</label><br>
+                <input type="checkbox" id="abductors" name="target_muscles" value="Abductors">
+                <label for="abductors">Abductors</label><br>
+                <input type="checkbox" id="biceps" name="target_muscles" value="Biceps">
+                <label for="biceps">Biceps</label><br>
+                <input type="checkbox" id="calves" name="target_muscles" value="Calves">
+                <label for="calves">Calves</label><br>
+                <input type="checkbox" id="chest" name="target_muscles" value="Chest">
+                <label for="chest">Chest</label><br>
+                <input type="checkbox" id="forearms" name="target_muscles" value="Forearms">
+                <label for="forearms">Forearms</label><br>
+                <input type="checkbox" id="glutes" name="target_muscles" value="Glutes">
+                <label for="glutes">Glutes</label><br>
+                <input type="checkbox" id="hamstrings" name="target_muscles" value="Hamstrings">
+                <label for="hamstrings">Hamstrings</label><br>
+                <input type="checkbox" id="lats" name="target_muscles" value="Lats">
+                <label for="lats">Lats</label><br>
+                <input type="checkbox" id="lower_back" name="target_muscles" value="Lower back">
+                <label for="lower_back">Lower back</label><br>
+                <input type="checkbox" id="middle_back" name="target_muscles" value="Middle Back">
+                <label for="middle_back">Middle Back</label><br>
+                <input type="checkbox" id="traps" name="target_muscles" value="Traps">
+                <label for="traps">Traps</label><br>
+                <input type="checkbox" id="neck" name="target_muscles" value="Neck">
+                <label for="neck">Neck</label><br>
+                <input type="checkbox" id="quadriceps" name="target_muscles" value="Quadriceps">
+                <label for="quadriceps">Quadriceps</label><br>
+                <input type="checkbox" id="shoulders" name="target_muscles" value="Shoulders">
+                <label for="shoulders">Shoulders</label><br>
+                <input type="checkbox" id="triceps" name="target_muscles" value="Triceps">
+                <label for="triceps">Triceps</label><br>
+            </div>
+            
+            <div class="form-group">
+                <label>Available Days:</label><br>
+                <input type="checkbox" id="monday" name="available_days" value="Monday">
+                <label for="monday">Monday</label><br>
+                <input type="checkbox" id="tuesday" name="available_days" value="Tuesday">
+                <label for="tuesday">Tuesday</label><br>
+                <input type="checkbox" id="wednesday" name="available_days" value="Wednesday">
+                <label for="wednesday">Wednesday</label><br>
+                <input type="checkbox" id="thursday" name="available_days" value="Thursday">
+                <label for="thursday">Thursday</label><br>
+                <input type="checkbox" id="friday" name="available_days" value="Friday">
+                <label for="friday">Friday</label><br>
+                <input type="checkbox" id="saturday" name="available_days" value="Saturday">
+                <label for="saturday">Saturday</label><br>
+                <input type="checkbox" id="sunday" name="available_days" value="Sunday">
+                <label for="sunday">Sunday</label><br>
+            </div>
+
+            <div class="form-group">
+                <label for="existing_workout_plan">Existing Workout Plan:</label>
+                <textarea class="form-control" id="existing_workout_plan" name="existing_workout_plan"></textarea>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Evaluate" class="btn btn-primary">
+            </div>
+        </form>
+    </div>    
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+</html>
