@@ -1,3 +1,3 @@
 [build]
-  command = "pip install -r requirements.txt && python FlaskGym1.py"
+  command = "pip install -r requirements.txt && python FlaskGym.py"
   publish = "/opt/build/repo"
